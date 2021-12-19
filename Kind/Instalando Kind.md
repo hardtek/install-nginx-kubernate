@@ -15,6 +15,14 @@ sudo mv ./kind /usr/local/bin/
 kind create cluster --name cluster01 --config kind-ingress.yaml
 ```
 
+```
 kind get clusters
+```
 
+```
+kubectl get nodes
+```
+
+```
 kind delete cluster
+```
