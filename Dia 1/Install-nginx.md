@@ -5,6 +5,10 @@ https://docs.oracle.com/pt-br/iaas/Content/ContEng/Tasks/contengsettingupingress
 
 https://kubernetes.io/docs/concepts/services-networking/ingress/
 
+#dns
+https://www.valuehost.com.br/blog/configurar-dns-no-linux/
+
+https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
 
 Criar certificado
 kubectl create secret tls tls-secret --key tls.key --cert tls.crt
