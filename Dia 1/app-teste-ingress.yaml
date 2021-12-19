@@ -1,0 +1,35 @@
+# kubectl create deployment hello-node --image=k8s.gcr.io/echoserver:1.4
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-teste
+  labels:
+    app: app-teste
+spec:
+  selector:
+    matchLabels:
+      app: app-teste
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: app-teste
+    spec:
+      containers:
+      - name: app-teste
+        image: k8s.gcr.io/echoserver:1.4
+        ports:
+        - containerPort: 8081
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-teste-svc
+spec:
+  selector:
+    app: app-teste
+  ports:
+    - port: 8080
+      targetPort: 8081
+  type: ClusterIP
+
