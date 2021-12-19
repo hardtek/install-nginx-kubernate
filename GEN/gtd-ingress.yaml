@@ -1,0 +1,60 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gdt-ingress
+  namespace: gdt-dev
+  selfLink: /apis/networking.k8s.io/v1/namespaces/gdt-dev/ingresses/gdt-ingress
+  uid: ca7d3a80-3df4-4116-bc3e-63365541d2fd
+  resourceVersion: '102647915'
+  generation: 4
+  creationTimestamp: '2021-06-07T12:41:31Z'
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: >
+      {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx","nginx.ingress.kubernetes.io/use-regex":"true"},"name":"gdt-ingress","namespace":"gdt-dev"},"spec":{"rules":[{"host":"gdtdev.ipirangacloud.com","http":{"paths":[{"backend":{"service":{"name":"gdt-service","port":{"number":80}}},"path":"/","pathType":"Prefix"}]}}],"tls":[{"hosts":["gdtdev.ipirangacloud.com"],"secretName":"secret-tls"}]}}
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: networking.k8s.io/v1
+      time: '2021-06-07T12:41:52Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+            f:kubernetes.io/ingress.class: {}
+            f:nginx.ingress.kubernetes.io/use-regex: {}
+        f:spec:
+          f:rules: {}
+          f:tls: {}
+    - manager: nginx-ingress-controller
+      operation: Update
+      apiVersion: networking.k8s.io/v1beta1
+      time: '2021-06-07T12:41:57Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:loadBalancer:
+            f:ingress: {}
+status:
+  loadBalancer:
+    ingress:
+      - ip: 20.185.43.82
+spec:
+  tls:
+    - hosts:
+        - gdtdev.ipirangacloud.com
+      secretName: secret-tls
+  rules:
+    - host: gdtdev.ipirangacloud.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gdt-service
+                port:
+                  number: 80

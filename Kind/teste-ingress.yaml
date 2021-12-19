@@ -24,24 +24,25 @@ spec:
   # Default port used by the image
   - port: 5678
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: teste.io
+  name: example-ingress
+  namespace: test-ingress
 spec:
   tls:
   - hosts:
       - teste.io
-    secretName: tls-secret
+  - secretName: tls-secret
   rules:
   - host: teste.io
-    http:
+  - http:
       paths:
-      - path: /
-        pathType: Prefix
+      - pathType: Prefix
+        path: "/home"
         backend:
           service:
             name: foo-service
             port:
               number: 5678
+
