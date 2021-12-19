@@ -26,3 +26,9 @@ kubectl get nodes
 ```
 kind delete cluster
 ```
+
+
+
+
+#iniciando ingress
+kubectl apply -f teste-ingress.yaml

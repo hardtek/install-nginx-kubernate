@@ -3,6 +3,8 @@ https://docs.microsoft.com/en-us/azure/aks/ingress-tls?tabs=azure-cli
 
 https://docs.oracle.com/pt-br/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm
 
+https://kubernetes.io/docs/concepts/services-networking/ingress/
+
 
 Criar certificado
 kubectl create secret tls tls-secret --key tls.key --cert tls.crt
