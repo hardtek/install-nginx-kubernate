@@ -10,6 +10,14 @@ https://www.valuehost.com.br/blog/configurar-dns-no-linux/
 
 https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
 
+
+#listar varios recursos namespace
+kubectl get deploy,pod,rs,svc,ing -n test-ingress
+
+#listar ingress de uma namespace
+kubectl get ingress -n gdt-dev
+
+
 Criar certificado
 kubectl create secret tls tls-secret --key tls.key --cert tls.crt
 
