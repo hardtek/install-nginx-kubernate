@@ -15,8 +15,8 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gdt-service2
-  namespace: gdt-hml
+  name: gdt-service
+  namespace: gdt-prd
 spec:
   selector:
     app: app-consentimento-service
@@ -48,8 +48,8 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: gdt-ingress2
-  namespace: gdt-hml
+  name: gdt-ingress
+  namespace: gdt-prd
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "500"
@@ -60,13 +60,13 @@ metadata:
 spec:
   tls:
     - hosts:
-        - gdthml2.ipirangacloud.com
-      secretName: secret-tls
+        - gdt2.ipirangacloud.com
+      secretName: tls-secret
   rules:
-  - host: gdthml2.ipirangacloud.com
+  - host: gdt2.ipirangacloud.com
     http:
       paths:
       - path: /
         backend:
-          serviceName: gdt-service2
+          serviceName: gdt-service
           servicePort: 80

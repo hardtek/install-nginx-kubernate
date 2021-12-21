@@ -31,4 +31,4 @@ kind delete cluster
 
 
 #iniciando ingress
-kubectl apply -f teste-ingress.yaml
+kubectl apply -f teste-ingressprd.yaml

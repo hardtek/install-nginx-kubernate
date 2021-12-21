@@ -10,6 +10,8 @@ https://www.valuehost.com.br/blog/configurar-dns-no-linux/
 
 https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
 
+https://www.ti-enxame.com/pt/ssl/o-kubernetes-nginx-ingress-controller-nao-obtem-certificados-tls/833932524/
+
 
 #listar varios recursos namespace
 kubectl get deploy,pod,rs,svc,ing -n test-ingress
@@ -20,6 +22,11 @@ kubectl get ingress -n gdt-dev
 
 Criar certificado
 kubectl create secret tls tls-secret --key tls.key --cert tls.crt
+
+kubectl create secret tls tls-secret \
+    --namespace gdt-prd \
+    --key tls.key \
+    --cert tls.crt
 
 
 `kubectl delete namespace <nome-namespace>`
