@@ -60,10 +60,10 @@ metadata:
 spec:
   tls:
     - hosts:
-        - gdt2.ipirangacloud.com
+        - gdt.ipirangacloud.com
       secretName: tls-secret
   rules:
-  - host: gdt2.ipirangacloud.com
+  - host: gdt.ipirangacloud.com
     http:
       paths:
       - path: /
