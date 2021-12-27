@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-teste
+  name: app-example
   labels:
-    app: app-teste
+    app: app-example
 spec:
   selector:
     matchLabels:
-      app: app-teste
+      app: app-example
   replicas: 2
   template:
     metadata:
       labels:
-        app: app-teste
+        app: app-example
     spec:
       containers:
-      - name: app-teste
+      - name: app-example
         image: k8s.gcr.io/echoserver:1.4
         ports:
         - containerPort: 8081
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app-teste-svc
+  name: app-example-svc
 spec:
   selector:
-    app: app-teste
+    app: app-example
   ports:
     - port: 8080
       targetPort: 8081

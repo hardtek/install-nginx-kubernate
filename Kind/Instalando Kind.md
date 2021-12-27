@@ -16,19 +16,31 @@ kind create cluster --name cluster01 --config kind-ingress.yaml
 ```
 
 ```
-kind get clusters
-```
-
-```
-kubectl get nodes
-```
-
-```
 kind delete cluster
 ```
 
-
-
-
 #iniciando ingress
-kubectl apply -f teste-ingressprd.yaml
+kubectl apply -f teste-ingress.yaml
+
+
+
+
+
+
+
+
+
+Outras Referências:
+
+https://docs.microsoft.com/en-us/azure/aks/ingress-tls?tabs=azure-cli
+
+https://docs.oracle.com/pt-br/iaas/Content/ContEng/Tasks/contengsettingupingresscontroller.htm
+
+https://kubernetes.io/docs/concepts/services-networking/ingress/
+
+#dns
+https://www.valuehost.com.br/blog/configurar-dns-no-linux/
+
+https://kubernetes.io/docs/concepts/services-networking/ingress/#tls
+
+https://www.ti-enxame.com/pt/ssl/o-kubernetes-nginx-ingress-controller-nao-obtem-certificados-tls/833932524/
