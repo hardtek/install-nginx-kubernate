@@ -1,0 +1,51 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: app
+  namespace: app-dev
+  labels:
+    app: app
+spec:
+  containers:
+  - name: app-container
+    image: hashicorp/http-echo:0.2.3
+    args:
+    - "-text=foo"
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app-service
+  namespace: app-dev
+spec:
+  selector:
+    app: app
+  ports:
+    - port: 5678
+      targetPort: 5678
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app-ingress
+  namespace: app-dev
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "500"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "500"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "500"
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  rules:
+  - host: dev.sorteiofire.com.br
+    http:
+      paths:
+      - pathType: Prefix
+        path: /app
+        backend:
+          service:
+            name: app-service
+            port:
+              number: 5678
