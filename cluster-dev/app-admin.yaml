@@ -15,19 +15,20 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: kong-service
+  name: kong-admin-service
 spec:
   selector:
     app.kubernetes.io/name: kong
   ports:
-    - port: 8000
-      targetPort: 8000
+    - name:
+    - port: 8001
+      targetPort: 8001
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: kong-ingress
+  name: kong-admin-ingress
   # namespace: app-dev
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
@@ -42,9 +43,9 @@ spec:
     http:
       paths:
       - pathType: Prefix
-        path: /kong
+        path: /kong-admin
         backend:
           service:
-            name: kong-service
+            name: kong-admin-service
             port:
-              number: 8000
+              number: 8001
