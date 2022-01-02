@@ -7,33 +7,9 @@ spec:
     - name: tcp-postgresql
       protocol: TCP
       port: 5432
-      targetPort: tcp-postgresql
+      targetPort: 5432
   selector:
     app.kubernetes.io/instance: kong
     app.kubernetes.io/name: postgresql
   type: LoadBalancer
 ---
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: postgresql-ingress
-#   namespace: adminer
-#   annotations:
-#     nginx.ingress.kubernetes.io/proxy-body-size: 8m
-#     nginx.ingress.kubernetes.io/proxy-connect-timeout: "500"
-#     nginx.ingress.kubernetes.io/proxy-read-timeout: "500"
-#     nginx.ingress.kubernetes.io/proxy-send-timeout: "500"
-#     kubernetes.io/ingress.class: nginx
-#     nginx.ingress.kubernetes.io/use-regex: "true"
-# spec:
-#   rules:
-#   - host: postgresql.sorteiofire.com.br
-#     http:
-#       paths:
-#       - pathType: Prefix
-#         path: /
-#         backend:
-#           service:
-#             name: kong-postgresql
-#             port:
-#               number: 5432
