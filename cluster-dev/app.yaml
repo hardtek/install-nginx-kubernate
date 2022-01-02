@@ -38,11 +38,11 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-  - host: dev.sorteiofire.com.br
+  - host: kong.sorteiofire.com.br
     http:
       paths:
       - pathType: Prefix
-        path: /kong
+        path: /
         backend:
           service:
             name: kong-service
