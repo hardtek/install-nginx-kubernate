@@ -12,53 +12,23 @@
 #     args:
 #     - "-text=foo"
 # ---
-# ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: app-deployment
-  namespace: app-dev
-  labels:
-    app: app
-spec:
-  selector:
-    matchLabels:
-      app: app
-  replicas: 1
-  template:
-    metadata:
-      labels:
-        app: app
-    spec:
-      containers:
-      - name: app-container
-        image: wesleywillians/kong-service:latest
-        ports:
-        - containerPort: 8081
-        env:
-          - name: PORT
-            value: ":8081"
-          - name: CONTENT
-            value: "Bem vindo a APP"
----
 kind: Service
 apiVersion: v1
 metadata:
-  name: app-service
-  namespace: app-dev
+  name: kong-service
 spec:
   selector:
-    app: app
+    app.kubernetes.io/name: kong
   ports:
-    - port: 8081
-      targetPort: 8081
+    - port: 8000
+      targetPort: 8000
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: app-ingress
-  namespace: app-dev
+  name: kong-ingress
+  namespace: default
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "500"
@@ -68,13 +38,13 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-  - host: dev.sorteiofire.com.br
+  - host: kong.sorteiofire.com.br
     http:
       paths:
       - pathType: Prefix
-        path: /app
+        path: /
         backend:
           service:
-            name: app-service
+            name: kong-service
             port:
-              number: 8081
+              number: 8000
