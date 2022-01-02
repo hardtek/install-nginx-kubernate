@@ -1,14 +1,37 @@
-kind: Pod
-apiVersion: v1
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: adminer
+  name: adminer-deployment
   namespace: adminer
   labels:
     app: adminer
 spec:
-  containers:
-  - name: adminer-container
-    image: adminer
+  selector:
+    matchLabels:
+      app: adminer
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: adminer
+    spec:
+      containers:
+      - name: adminer-container
+        image: adminer
+        ports:
+        - containerPort: 8080
+# ---
+# kind: Pod
+# apiVersion: v1
+# metadata:
+#   name: adminer
+#   namespace: adminer
+#   labels:
+#     app: adminer
+# spec:
+#   containers:
+#   - name: adminer-container
+#     image: adminer
 ---
 kind: Service
 apiVersion: v1
@@ -19,7 +42,7 @@ spec:
   selector:
     app: adminer
   ports:
-    - port: 8080
+    - port: 80
       targetPort: 8080
   type: LoadBalancer
 ---
