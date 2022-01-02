@@ -12,7 +12,7 @@ sudo mv ./kind /usr/local/bin/
 
 ##Criar Cluster
 ```
-kind create cluster --name cluster01 --config kind-ingress.yaml
+kind create cluster --name cluster01 --config kind.yaml
 ```
 
 ```
