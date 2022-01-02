@@ -1,0 +1,16 @@
+http://dev.sorteiofire.com.br/
+
+app.kubernetes.io/name=kong
+
+http://dev.sorteiofire.com.br/app
+
+http://kong-admin.sorteiofire.com.br
+
+http://kong.sorteiofire.com.br/
+
+http://postgresql.sorteiofire.com.br/
+
+http://konga.sorteiofire.com.br/#!/login
+
+
+
