@@ -15,7 +15,7 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: gdt-service
+  name: app-consentimento-service
   namespace: gdt-hml
 spec:
   selector:
@@ -48,7 +48,7 @@ spec:
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: gdt-ingress
+  name: app-consentimento-ingress
   namespace: gdt-hml
   annotations:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
@@ -68,5 +68,5 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: gdt-service
+          serviceName: app-consentimento-service
           servicePort: 80
